@@ -20,7 +20,8 @@ app.use(express.json()); // middleware to parse json data from the request body
 
 app.use(cors(
     // { credentials: true, origin: process.env.CORS_ORIGIN  }
-    {credentials: true, origin: '*'}
+    // {credentials: true, origin: '*'}
+    {credentials: true, origin: 'https://blog-hub-api-kow3.onrender.com'}    
 ));
 
     

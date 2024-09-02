@@ -25,7 +25,7 @@ const Navbar = () => {
 
   const logout = async () => {
     try {
-      await fetch('http://localhost:4000/logout', {
+      await fetch('https://blog-hub-api-kow3.onrender.com/logout', {
         credentials: 'include',
         method: 'POST',
       });

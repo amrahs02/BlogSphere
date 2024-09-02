@@ -37,7 +37,7 @@ const EditPost = () => {
         if (files?.[0]) {
             data.set('file', files?.[0]);
         }
-        const res = await fetch('http://localhost:4000/post', {
+        const res = await fetch('https://blog-hub-api-kow3.onrender.com/post', {
             method: 'PUT',
             body: data,
             credentials: 'include'
