@@ -26,7 +26,7 @@ const Post = ({ title, summary, cover, createdAt, updatedAt, author, _id }) => {
             <div className="relative ">
                 <Link to={`/post/${_id}`}>
                     <img
-                        src={`http://localhost:4000/${cover}`}
+                        src={`https://blog-hub-api-kow3.onrender.com/${cover}`}
                         alt={`${title} cover`}
                         className="object-cover rounded-xl w-full h-32"
                     />

@@ -15,7 +15,7 @@ const EditPost = () => {
     const [redirect, setRedirect] = useState(false);
 
     useEffect(() => {
-        fetch('http://localhost:4000/post/' + id)
+        fetch('https://blog-hub-api-kow3.onrender.com/post/' + id)
             .then(res => {
                 res.json().then(postInfo => {
                     setTitle(postInfo.title);

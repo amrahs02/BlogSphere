@@ -27,7 +27,7 @@ const PostPage = () => {
   const { id } = useParams();
 
   useEffect(() => {
-    fetch(`http://localhost:4000/post/${id}`)
+    fetch(`https://blog-hub-api-kow3.onrender.com/post/${id}`)
       .then(res => res.json())
       .then(postInfo => setPostInfo(postInfo));
   }, [id]);
@@ -82,7 +82,7 @@ const PostPage = () => {
 
       <div className="image mb-10">
         <img
-          src={`http://localhost:4000/${postInfo.cover}`}
+          src={`https://blog-hub-api-kow3.onrender.com/${postInfo.cover}`}
           alt={`${postInfo.title} cover`}
           className="w-full h-80 object-cover rounded-lg shadow-xl"
         />

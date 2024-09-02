@@ -8,7 +8,7 @@ const IndexPage = () => {
   const searchInputRef = useRef(null);
 
   useEffect(() => {
-    fetch('http://localhost:4000/post')
+    fetch('https://blog-hub-api-kow3.onrender.com/post')
       .then(res => res.json())
       .then(posts => {
         setPosts(posts);
