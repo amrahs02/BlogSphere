@@ -16,9 +16,14 @@ const cookieParser = require('cookie-parser');
 const secret = process.env.SECRET;
 const salt = bcrypt.genSaltSync(10);
 app.use(express.json()); // middleware to parse json data from the request body 
+
+
 app.use(cors(
-    { credentials: true, origin: process.env.CORS_ORIGIN }
+    { credentials: true, origin: process.env.CORS_ORIGIN  }
 ));
+
+
+
 app.use(cookieParser());
 app.use('/uploads', express.static('uploads'));
 
