@@ -75,13 +75,13 @@ app.get('/profile', (req, res) => {
     const { token } = req.cookies;
     jwt.verify(token, secret, {}, (err, info) => {
         if (err) {
-            res.status(400).json({ message: 'Invalid token' });
-        } else {
-            res.json(info);
+            return res.status(400).json({ message: 'Invalid token' });
         }
+        res.json(info); // Send the response and exit
     });
-    res.json(req.cookies);
+    // Remove or handle the extra response carefully
 });
+
 
 app.post('/logout', (req, res) => {
     res.cookie('token', '').json('Logged out');
