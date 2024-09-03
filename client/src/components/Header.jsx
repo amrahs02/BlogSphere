@@ -44,7 +44,7 @@ const Navbar = () => {
     <header className="bg-purple-600 text-white shadow-lg">
       <div className="container mx-auto flex justify-between items-center p-4">
         <Link to="/" className="text-2xl md:text-3xl font-bold hover:text-gray-200">
-          .BlogHub
+          .BlogSphere
         </Link>
         <button
           className="md:hidden text-white focus:outline-none"
