@@ -2,15 +2,6 @@
 
 A modern blog application built using the MERN stack (MongoDB, Express, React, Node.js) with Vite as the build tool. This project includes user authentication, CRUD operations for posts, and a clean, responsive UI.
 
-## Table of Contents
-
-- [Project Overview](#project-overview)
-- [Technologies](#technologies)
-- [Features](#features)
-- [Installation](#installation)
-- [Usage](#usage)# BlogSphere   
-
-A modern blog application built using the MERN stack (MongoDB, Express, React, Node.js) with Vite as the build tool. This project includes user authentication, CRUD operations for posts, and a clean, responsive UI.
 
 ## Table of Contents
 
