@@ -1,6 +1,12 @@
 import { formatISO9075 } from 'date-fns';
 import { Link } from 'react-router-dom';
 
+
+// Determine the base URL based on the environment
+const baseURL = window.location.hostname === 'localhost'
+  ? 'http://localhost:4000'
+  : 'https://blog-hub-api-kow3.onrender.com';
+
 // Utility function to generate initials from a name
 const getInitials = (name) => {
     if (!name) return '';
@@ -26,8 +32,8 @@ const Post = ({ title, summary, cover, createdAt, updatedAt, author, _id }) => {
             <div className="relative ">
                 <Link to={`/post/${_id}`}>
                     <img
-                        src={`https://blog-hub-api-kow3.onrender.com/${cover}`}
-                        alt={`${title} cover`}
+                        src={`${baseURL}/${cover}`}
+                         alt={`${title} cover`}
                         className="object-cover rounded-xl w-full h-32"
                     />
                 </Link>

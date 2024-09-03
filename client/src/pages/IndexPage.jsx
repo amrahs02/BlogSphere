@@ -1,6 +1,11 @@
 import React, { useEffect, useRef, useState } from 'react';
 import Post from '../components/Post';
 
+// Determine the base URL based on the environment
+const baseURL = window.location.hostname === 'localhost'
+  ? 'http://localhost:4000'
+  : 'https://blog-hub-api-kow3.onrender.com';
+
 const IndexPage = () => {
   const [posts, setPosts] = useState([]);
   const [filteredPosts, setFilteredPosts] = useState([]);
@@ -8,7 +13,7 @@ const IndexPage = () => {
   const searchInputRef = useRef(null);
 
   useEffect(() => {
-    fetch('https://blog-hub-api-kow3.onrender.com/post')
+    fetch(`${baseURL}/post`)
       .then(res => res.json())
       .then(posts => {
         setPosts(posts);
@@ -62,8 +67,8 @@ const IndexPage = () => {
           type="submit"
           className="w-full md:w-auto bg-purple-500 text-white px-2 py-1 rounded-r-full hover:bg-blue-600 mt-2 md:mt-0 transition-colors duration-300 ease-in-out"
         >
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
-            <path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="size-6">
+            <path strokeLinecap="round" strokeLinejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
           </svg>
 
         </button>

@@ -2,6 +2,12 @@ import { useContext, useState } from 'react';
 import { Navigate, Link } from 'react-router-dom';
 import { UserContext } from '../UserContext';
 
+
+// Determine the base URL based on the environment
+const baseURL = window.location.hostname === 'localhost'
+  ? 'http://localhost:4000'
+  : 'https://blog-hub-api-kow3.onrender.com';
+
 const LoginPage = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -10,7 +16,7 @@ const LoginPage = () => {
 
   const login = async (e) => {
     e.preventDefault();
-    const response = await fetch('https://blog-hub-api-kow3.onrender.com/login', {
+    const response = await fetch(`${baseURL}/login`, {
       method: 'POST',
       body: JSON.stringify({ username, password }),
       headers: { 'Content-Type': 'application/json' },

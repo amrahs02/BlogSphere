@@ -4,7 +4,10 @@ import { Navigate, useParams } from 'react-router-dom';
 import Editor from '../Editor';
 
 
-
+// Determine the base URL based on the environment
+const baseURL = window.location.hostname === 'localhost'
+  ? 'http://localhost:4000'
+  : 'https://blog-hub-api-kow3.onrender.com';
 
 const EditPost = () => {
     const { id } = useParams();
@@ -15,7 +18,7 @@ const EditPost = () => {
     const [redirect, setRedirect] = useState(false);
 
     useEffect(() => {
-        fetch('https://blog-hub-api-kow3.onrender.com/post/' + id)
+        fetch(`${baseURL}/post` + id)
             .then(res => {
                 res.json().then(postInfo => {
                     setTitle(postInfo.title);
@@ -24,7 +27,7 @@ const EditPost = () => {
                 });
             });
     }, [id]); // Add dependency array here
-    
+
 
     const updatePost = async (e) => {
         e.preventDefault();
@@ -37,7 +40,7 @@ const EditPost = () => {
         if (files?.[0]) {
             data.set('file', files?.[0]);
         }
-        const res = await fetch('https://blog-hub-api-kow3.onrender.com/post', {
+        const res = await fetch(`${baseURL}/post`, {
             method: 'PUT',
             body: data,
             credentials: 'include'

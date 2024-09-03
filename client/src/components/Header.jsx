@@ -2,13 +2,19 @@ import { useContext, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { UserContext } from '../UserContext';
 
+
+// Determine the base URL based on the environment
+const baseURL = window.location.hostname === 'localhost'
+  ? 'http://localhost:4000'
+  : 'https://blog-hub-api-kow3.onrender.com';
+
 const Navbar = () => {
   const { setUserInfo, userInfo } = useContext(UserContext);
 
   useEffect(() => {
     const fetchUserProfile = async () => {
       try {
-        const response = await fetch('https://blog-hub-api-kow3.onrender.com/profile', {
+        const response = await fetch(`${baseURL}/profile`, {
           credentials: 'include',
         });
         const data = await response.json();
@@ -25,7 +31,7 @@ const Navbar = () => {
 
   const logout = async () => {
     try {
-      await fetch('https://blog-hub-api-kow3.onrender.com/logout', {
+      await fetch(`${baseURL}/logout`, {
         credentials: 'include',
         method: 'POST',
       });

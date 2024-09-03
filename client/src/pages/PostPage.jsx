@@ -4,6 +4,12 @@ import { useContext } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { UserContext } from '../UserContext';
 
+
+// Determine the base URL based on the environment
+const baseURL = window.location.hostname === 'localhost'
+  ? 'http://localhost:4000'
+  : 'https://blog-hub-api-kow3.onrender.com';
+
 // Utility function to generate initials from a name
 const getInitials = (name) => {
   if (!name) return 'U';
@@ -27,7 +33,7 @@ const PostPage = () => {
   const { id } = useParams();
 
   useEffect(() => {
-    fetch(`https://blog-hub-api-kow3.onrender.com/post/${id}`)
+    fetch(`${baseURL}/post/${id}`)
       .then(res => res.json())
       .then(postInfo => setPostInfo(postInfo));
   }, [id]);
@@ -82,7 +88,7 @@ const PostPage = () => {
 
       <div className="image mb-10">
         <img
-          src={`https://blog-hub-api-kow3.onrender.com/${postInfo.cover}`}
+          src={`${baseURL}/${postInfo.cover}`}
           alt={`${postInfo.title} cover`}
           className="w-full h-80 object-cover rounded-lg shadow-xl"
         />

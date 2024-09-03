@@ -18,9 +18,11 @@ const salt = bcrypt.genSaltSync(10);
 app.use(express.json()); // middleware to parse json data from the request body 
 
 
+
+
 app.use(cors(
     // { credentials: true, origin: process.env.CORS_ORIGIN  }
-    // {credentials: true, origin: '*'}
+    // {credentials: true, origin: 'http://localhost:5173'}
     {credentials: true, origin: 'https://blog-hub-ui.onrender.com'}    
 ));
 
