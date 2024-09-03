@@ -33,7 +33,7 @@ const PostPage = () => {
   const { id } = useParams();
 
   useEffect(() => {
-    fetch(`${baseURL}/${id}`)
+    fetch(`${baseURL}/post/${id}`)
       .then(res => res.json())
       .then(postInfo => setPostInfo(postInfo));
   }, [id]);
