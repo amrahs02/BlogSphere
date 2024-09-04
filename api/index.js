@@ -19,14 +19,13 @@ app.use(express.json()); // middleware to parse json data from the request body
 
 
 
+app.use(cors({
+    credentials: true,
+    origin: ['http://localhost:5173', 'https://blogsphereapp.onrender.com']
+}));
 
-app.use(cors(
-    // { credentials: true, origin: process.env.CORS_ORIGIN  }
-    // {credentials: true, origin: 'http://localhost:5173'}
-    {credentials: true, origin: 'https://blogsphereapp.onrender.com'}    
-));
 
-    
+
 
 app.use(cookieParser());
 app.use('/uploads', express.static('uploads'));
@@ -64,7 +63,13 @@ app.post("/login", async (req, res) => {
             if (err) {
                 res.status(400).json({ message: 'Login failed' });
             } else {
-                res.cookie('token', token).json({
+                res.cookie('token', token, {
+                    httpOnly: true,
+                    sameSite: 'none',
+                    secure: true,
+                })
+                
+                .json({
                     id: userDoc._id,
                     username,
                 });
