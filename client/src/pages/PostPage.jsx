@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import { useContext } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { UserContext } from '../UserContext';
+import { Audio } from 'react-loader-spinner'
 
 
 // Determine the base URL based on the environment
@@ -39,7 +40,19 @@ const PostPage = () => {
   }, [id]);
 
   if (!postInfo) {
-    return <div className="text-center py-20 text-gray-500">Loading...</div>;
+    return <div className="text-center py-20 text-gray-500">
+
+      <Audio
+        height="80"
+        width="80"
+        radius="9"
+        color="green"
+        ariaLabel="loading"
+        wrapperStyle
+        wrapperClass
+      />
+      {/* Loading... */}
+    </div>;
   }
 
   const initials = postInfo.author ? getInitials(postInfo.author.username) : 'U';

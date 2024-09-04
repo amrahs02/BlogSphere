@@ -1,5 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import Post from '../components/Post';
+import { TailSpin } from 'react-loader-spinner'
+
 
 // Determine the base URL based on the environment
 const baseURL = window.location.hostname === 'localhost'
@@ -77,7 +79,19 @@ const IndexPage = () => {
       </form>
 
       {isLoading ? (
-        <p className="text-center text-gray-500">Loading...</p>
+        <div className="flex mt-20 justify-center items-center">
+          <TailSpin   // Type of spinner
+            height="80"
+            width="80"
+            color="#4fa94d"
+            ariaLabel="tail-spin-loading"
+            radius="1"
+            wrapperStyle={{}}
+            wrapperClass=""
+            visible={true}
+
+          />
+        </div>
       ) : (
         <div className="flex flex-wrap gap-4">
           <div className="flex-grow">

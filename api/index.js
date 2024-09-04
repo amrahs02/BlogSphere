@@ -116,7 +116,7 @@ app.post('/post', uploadMiddleware.single('file'), async (req, res) => {
     });
 });
 
-app.put('/post', uploadMiddleware.single('file'), async (req, res) => {
+app.put('/post/:id', uploadMiddleware.single('file'), async (req, res) => {
     let newPath = null;
     if (req.file) {
         const { originalname, path } = req.file;
@@ -126,13 +126,13 @@ app.put('/post', uploadMiddleware.single('file'), async (req, res) => {
         fs.renameSync(path, newPath);
     }
 
+    const { id } = req.params; // Get the post ID from the route parameter
     const { token } = req.cookies;
     jwt.verify(token, secret, {}, async (err, info) => {
         if (err) {
             return res.status(400).json({ message: 'Invalid token' });
         }
 
-        const { id, title, summary, content } = req.body;
         const postDoc = await Post.findById(id);
         const isAuthor = JSON.stringify(postDoc.author) === JSON.stringify(info.id);
         if (!isAuthor) {
@@ -141,15 +141,16 @@ app.put('/post', uploadMiddleware.single('file'), async (req, res) => {
 
         // Update the post, either with a new cover or keep the existing one
         await postDoc.updateOne({
-            title,
-            summary,
-            content,
+            title: req.body.title,
+            summary: req.body.summary,
+            content: req.body.content,
             cover: newPath ? newPath : postDoc.cover,
         });
 
         res.json(postDoc);
     });
 });
+
 
 app.get('/post', async (req, res) => {
     res.json(await Post.find()

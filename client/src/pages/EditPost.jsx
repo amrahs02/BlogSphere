@@ -3,7 +3,6 @@ import 'react-quill/dist/quill.snow.css'; // to style ReactQuill component
 import { Navigate, useParams } from 'react-router-dom';
 import Editor from '../Editor';
 
-
 // Determine the base URL based on the environment
 const baseURL = window.location.hostname === 'localhost'
   ? 'http://localhost:4000'
@@ -18,16 +17,14 @@ const EditPost = () => {
     const [redirect, setRedirect] = useState(false);
 
     useEffect(() => {
-        fetch(`${baseURL}/post` + id)
-            .then(res => {
-                res.json().then(postInfo => {
-                    setTitle(postInfo.title);
-                    setSummary(postInfo.summary);
-                    setContent(postInfo.content);
-                });
+        fetch(`${baseURL}/post/${id}`)
+            .then(res => res.json())
+            .then(postInfo => {
+                setTitle(postInfo.title);
+                setSummary(postInfo.summary);
+                setContent(postInfo.content);
             });
-    }, [id]); // Add dependency array here
-
+    }, [id]);
 
     const updatePost = async (e) => {
         e.preventDefault();
@@ -36,11 +33,11 @@ const EditPost = () => {
         data.set('summary', summary);
         data.set('content', content);
         data.set('id', id);
-        // data.set('cover', cover);
         if (files?.[0]) {
             data.set('file', files?.[0]);
         }
-        const res = await fetch(`${baseURL}/post`, {
+
+        const res = await fetch(`${baseURL}/post/${id}`, {
             method: 'PUT',
             body: data,
             credentials: 'include'
@@ -51,7 +48,6 @@ const EditPost = () => {
         }
     }
 
-
     if (redirect) {
         return <Navigate to={'/post/' + id} />;
     }
@@ -60,7 +56,7 @@ const EditPost = () => {
         <div className="inset-0 bg-gray-900 bg-opacity-50 flex items-center justify-center">
             <div className="fixed inset-0 backdrop-blur-sm"></div>
             <div className="relative w-full max-w-md mx-auto p-6 bg-white rounded-xl shadow-lg space-y-6 z-10">
-                <h2 className="text-xl font-bold text-gray-800">Create a New Post</h2>
+                <h2 className="text-xl font-bold text-gray-800">Edit Post</h2>
                 <form onSubmit={updatePost} className="space-y-4">
                     <div>
                         <label className="block text-sm font-medium text-gray-700 mb-2">Title</label>

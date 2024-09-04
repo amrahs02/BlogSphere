@@ -16,12 +16,16 @@ const Navbar = () => {
         const response = await fetch(`${baseURL}/profile`, {
           credentials: 'include',
         });
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
         const data = await response.json();
         setUserInfo(data);
       } catch (error) {
         console.error('Error fetching user profile:', error);
       }
     };
+
 
     fetchUserProfile();
   }, [setUserInfo]);
