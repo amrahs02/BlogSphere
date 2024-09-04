@@ -87,13 +87,11 @@ const PostPage = () => {
 
 
       <div className="image mb-10">
-        {postInfo.cover && (
-          <img
-            src={`${baseURL}/${postInfo.cover}`}
-            alt={`${postInfo.title} cover`}
-            className="w-full h-80 object-cover rounded-lg shadow-xl"
-          />
-        )}
+        <img
+          src={`${baseURL}/${postInfo.cover}`}
+          alt={`${postInfo.title} cover`}
+          className="w-full h-80 object-cover rounded-lg shadow-xl"
+        />
       </div>
 
       <h1 className="text-5xl font-extrabold text-gray-900 mb-6 leading-tight">{postInfo.title}</h1>
