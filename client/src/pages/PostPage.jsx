@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import { useContext } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { UserContext } from '../UserContext';
-import { Audio, FidgetSpinner, TailSpin } from 'react-loader-spinner'
+import { TailSpin } from 'react-loader-spinner'
 
 
 // Determine the base URL based on the environment
@@ -40,18 +40,18 @@ const PostPage = () => {
   }, [id]);
 
   if (!postInfo) {
-    return <div className="text-center py-20 text-gray-500">
-
-      <TailSpin
+    return <div className="flex mt-20 justify-center items-center">
+      <TailSpin   // Type of spinner
         height="80"
         width="80"
-        radius="9"
-        color="green"
-        ariaLabel="loading"
-        wrapperStyle
-        wrapperClass
+        color="#4fa94d"
+        ariaLabel="tail-spin-loading"
+        radius="1"
+        wrapperStyle={{}}
+        wrapperClass=""
+        visible={true}
+
       />
-      {/* Loading... */}
     </div>;
   }
 
