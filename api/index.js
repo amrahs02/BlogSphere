@@ -64,7 +64,11 @@ app.post("/login", async (req, res) => {
             if (err) {
                 res.status(400).json({ message: 'Login failed' });
             } else {
-                res.cookie('token', token).json({
+                res.cookie('token', token, {
+                    httpOnly: true,
+                    sameSite: 'None',
+                    secure: true,
+                }).json({
                     id: userDoc._id,
                     username,
                 });
