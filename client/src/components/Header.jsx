@@ -45,8 +45,8 @@ const Navbar = () => {
   };
 
   return (
-    <header className="bg-purple-600 text-white shadow-lg">
-      <div className="container mx-auto flex justify-between items-center p-4">
+    <header className="bg-purple-600  m-2 rounded-2xl text-white shadow-lg">
+      <div className="container mx-auto  flex justify-between items-center p-4">
         <Link to="/" className="text-2xl md:text-3xl font-bold hover:text-gray-200">
           .BlogSphere
         </Link>
@@ -79,7 +79,7 @@ const Navbar = () => {
                 Welcome, {username}
               </span>
               <Link
-                className="flex mt-2 md:mt-0 bg-purple-700 hover:bg-purple-800 text-white font-semibold py-2 px-4 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 transition"
+                className="flex mt-2 md:mt-0 bg-purple-700 hover:bg-purple-800 text-white font-semibold py-2 px-4 rounded-2xl focus:outline-none focus:ring-2 focus:ring-purple-500 transition"
                 to="/create"
               >
                 Create Post
@@ -91,7 +91,7 @@ const Navbar = () => {
               </Link>
               <button
                 onClick={logout}
-                className="flex mt-2 md:mt-0 bg-purple-700 hover:bg-purple-800 text-white font-semibold py-2 px-4 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 transition"
+                className="flex mt-2 md:mt-0 bg-purple-700 hover:bg-purple-800 text-white font-semibold py-2 px-4 rounded-2xl focus:outline-none focus:ring-2 focus:ring-purple-500 transition"
               >
                 Logout
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6 ml-2">
@@ -103,7 +103,7 @@ const Navbar = () => {
           ) : (
             <>
               <Link
-                className="flex mt-2 md:mt-0 bg-purple-700 hover:bg-purple-800 text-white font-semibold py-2 px-4 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 transition"
+                className="flex mt-2 md:mt-0 bg-purple-700 hover:bg-purple-800 text-white font-semibold py-2 px-4 rounded-2xl focus:outline-none focus:ring-2 focus:ring-purple-500 transition"
                 to="/login"
               >
                 Login
@@ -112,7 +112,7 @@ const Navbar = () => {
                 </svg>
               </Link>
               <Link
-                className="flex mt-2 md:mt-0 bg-purple-700 hover:bg-purple-800 text-white font-semibold py-2 px-4 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 transition"
+                className="flex mt-2 md:mt-0 bg-purple-700 hover:bg-purple-800 text-white font-semibold py-2 px-4 rounded-2xl focus:outline-none focus:ring-2 focus:ring-purple-500 transition"
                 to="/register"
               >
                 Register

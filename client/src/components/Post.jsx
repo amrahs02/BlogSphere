@@ -28,13 +28,13 @@ const Post = ({ title, summary, cover, createdAt, updatedAt, author, _id }) => {
     const initials = author ? getInitials(author.username) : 'U';
 
     return (
-        <div className="bg-gray-100 p-3 shadow-sm rounded-xl overflow-hidden max-w-2xl mx-auto my-8 transition-transform transform hover:shadow-lg">
+        <div className="bg-white border border-slate-300 p-3 shadow- rounded-2xl overflow-hidden max-w-2xl mx-auto my-8 transition-transform transform hover:shadow-lg">
             <div className="relative ">
                 <Link to={`/post/${_id}`}>
                     <img
                         src={`${baseURL}/${cover}`}
                          alt={`${title} cover`}
-                        className="object-cover rounded-xl w-full h-32"
+                        className="object-cover rounded-2xl w-full h-32"
                     />
                 </Link>
             </div>
@@ -45,23 +45,25 @@ const Post = ({ title, summary, cover, createdAt, updatedAt, author, _id }) => {
                         {initials.split('').map((initial, index) => (
                             <div
                                 key={index}
-                                className="w-10 h-10 flex items-center justify-center rounded-full text-white text-xl font-bold"
+                                className="w-10 h-10 flex items-center justify-center rounded-2xl text-white text-xl font-bold"
                                 style={{ backgroundColor: getRandomColor() }}
                             >
                                 {initial}
                             </div>
                         ))}
                     </div>
-                    <div className="ml-4 flex flex-col">
-                        <p className="text-lg text-gray-800 font-medium">{author ? author.username : 'Unknown'}</p>
-                        <time className="text-sm text-gray-500">{formatISO9075(new Date(updatedAt))}</time>
+                    <div className="ml-4  flex flex-col">
+                        <p className="text-lg text-gray-800 font-medium"> Author : {author ? author.username : 'Unknown'}</p>
+                        <time className="text-sm text-gray-500">
+                            Created: {formatISO9075(new Date(createdAt))}
+                        </time>
                     </div>
                 </div>
 
                 <Link to={`/post/${_id}`}>
                     <h1 className="text-3xl font-bold text-gray-900 mb-4 hover:text-indigo-600 transition-colors">{title}</h1>
                 </Link>
-                <p className="text-gray-700 text-lg mb-6 leading-relaxed">{summary}</p>
+                <p className="text-gray-700 text-lg mb-1 leading-relaxed">{summary}</p>
             </div>
         </div>
     );

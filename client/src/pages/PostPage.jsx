@@ -59,15 +59,15 @@ const PostPage = () => {
 
   return (
     <div className="post-page max-w-4xl mx-auto py-12 px-6">
-      <div className='flex justify-between items-center' >
+      <div className='flex  justify-between items-center' >
 
-        <div className="flex items-center mb-8">
+        <div className="flex  items-center mb-8">
           <div className="author flex items-center space-x-4">
             <div className="flex space-x-2">
               {initials.split('').map((initial, index) => (
                 <div
                   key={index}
-                  className="w-12 h-12 flex items-center justify-center rounded-full text-white text-2xl font-bold"
+                  className="w-12 h-12  flex items-center justify-center rounded-2xl text-white text-2xl font-bold"
                   style={{ backgroundColor: getRandomColor() }}
                 >
                   {initial}
@@ -103,7 +103,7 @@ const PostPage = () => {
         <img
           src={`${baseURL}/${postInfo.cover}`}
           alt={`${postInfo.title} cover`}
-          className="w-full h-80 object-cover rounded-lg shadow-xl"
+          className="w-full h-80 object-cover border border-gray-300 rounded-2xl shadow-sm"
         />
       </div>
 
