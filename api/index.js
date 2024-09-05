@@ -22,8 +22,8 @@ app.use(express.json()); // middleware to parse json data from the request body
 
 app.use(cors(
     // { credentials: true, origin: process.env.CORS_ORIGIN  }
-    // {credentials: true, origin: 'http://localhost:5173'}
-    {credentials: true, origin: 'https://blogsphereapp.onrender.com'}    
+    {credentials: true, origin: 'http://localhost:5173'}
+    // {credentials: true, origin: 'https://blogsphereapp.onrender.com'}    
 ));
 
     

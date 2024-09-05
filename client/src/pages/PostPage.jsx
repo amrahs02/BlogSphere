@@ -58,10 +58,10 @@ const PostPage = () => {
   const initials = postInfo.author ? getInitials(postInfo.author.username) : 'U';
 
   return (
-    <div className="post-page max-w-4xl mx-auto py-12 px-6">
-      <div className='flex  justify-between items-center' >
+    <div className="post-page bg-gray-50  rounded-2xl max-w-4xl mx-auto py-5 px-6">
+      <div className='flex justify-between bg-gray-200  rounded-2xl my-2 p-4 items-center' >
 
-        <div className="flex  items-center mb-8">
+        <div className="flex items-center mb-8">
           <div className="author flex items-center space-x-4">
             <div className="flex space-x-2">
               {initials.split('').map((initial, index) => (
@@ -75,7 +75,7 @@ const PostPage = () => {
               ))}
             </div>
             <div className="ml-4">
-              <p className="text-xl text-gray-900 font-semibold">
+              <p className="text-lg text-gray-900 font-semibold">
                 {postInfo.author ? postInfo.author.username : 'Unknown'}
               </p>
               <time className="text-gray-500 text-sm">
@@ -86,12 +86,15 @@ const PostPage = () => {
 
         </div>
         {userInfo.id === postInfo.author._id && (
-          <div className="flex  justify-end mb-8">
-            <Link className='edit-btn' to={`/edit/${postInfo._id}`} >
+          <div className="flex justify-end mb-8 ">
+            <Link className='edit-btn flex justify-center items-center rounded-2xl py-3 font-semibold hover:bg-emerald-600 px-4 bg-emerald-700  text-white ' to={`/edit/${postInfo._id}`} >
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
                 <path strokeLinecap="round" strokeLinejoin="round" d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L10.582 16.07a4.5 4.5 0 0 1-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 0 1 1.13-1.897l8.932-8.931Zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0 1 15.75 21H5.25A2.25 2.25 0 0 1 3 18.75V8.25A2.25 2.25 0 0 1 5.25 6H10" />
               </svg>
-              Edit this post </Link>
+              <div>
+                Edit this post
+              </div>
+            </Link>
 
           </div>
         )}
@@ -107,14 +110,14 @@ const PostPage = () => {
         />
       </div>
 
-      <h1 className="text-5xl font-extrabold text-gray-900 mb-6 leading-tight">{postInfo.title}</h1>
-      <p className="text-lg text-gray-700 mb-8 leading-relaxed">{postInfo.summary}</p>
+      <h1 className="text-4xl bg-gray-200 rounded-2xl text-center font-extrabold text-gray-900 mb-6 leading-tight">{postInfo.title}</h1>
+      <p className="text-lg text-gray-700  mb-8 leading-relaxed">{postInfo.summary}</p>
 
       <div
         className="prose prose-lg max-w-none text-gray-800"
         dangerouslySetInnerHTML={{ __html: postInfo.content }}
       />
-    </div>
+    </div >
   );
 };
 

@@ -5,8 +5,8 @@ import Editor from '../Editor';
 
 // Determine the base URL based on the environment
 const baseURL = window.location.hostname === 'localhost'
-  ? 'http://localhost:4000'
-  : 'https://blog-hub-api-kow3.onrender.com';
+    ? 'http://localhost:4000'
+    : 'https://blog-hub-api-kow3.onrender.com';
 
 const EditPost = () => {
     const { id } = useParams();
@@ -52,10 +52,17 @@ const EditPost = () => {
         return <Navigate to={'/post/' + id} />;
     }
 
+    const cancelPost = () => {
+        setRedirect(true);
+    }
+
     return (
         <div className="inset-0 bg-gray-900 bg-opacity-50 flex items-center justify-center">
             <div className="fixed inset-0 backdrop-blur-sm"></div>
-            <div className="relative w-full max-w-md mx-auto p-6 bg-white rounded-2xl shadow-lg space-y-6 z-10">
+            <svg onClick={cancelPost} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className=" text-red-800 hover:text-white  bg-white rounded-xl hover:bg-red-500  sm:top-12 top-20  absolute size-8">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
+            </svg>
+            <div className="relative w-4/5 mx-auto m-8 p-6 bg-white rounded-2xl shadow-lg space-y-6 z-10">
                 <h2 className="text-xl font-bold text-gray-800">Edit Post</h2>
                 <form onSubmit={updatePost} className="space-y-4">
                     <div>
@@ -65,7 +72,7 @@ const EditPost = () => {
                             placeholder="Enter the title"
                             value={title}
                             onChange={e => setTitle(e.target.value)}
-                            className="w-full p-2 border border-gray-300 rounded-2xl focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                            className="w-full p-2 border border-gray-300 rounded-2xl focus:outline-none focus:ring-2 focus:ring--500"
                         />
                     </div>
                     <div>
@@ -75,7 +82,7 @@ const EditPost = () => {
                             placeholder="Enter a brief summary"
                             value={summary}
                             onChange={e => setSummary(e.target.value)}
-                            className="w-full p-2 border border-gray-300 rounded-2xl focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                            className="w-full p-2 border border-gray-300 rounded-2xl focus:outline-none focus:ring-2 focus:ring-emerald-500"
                         />
                     </div>
                     <div>
@@ -83,14 +90,14 @@ const EditPost = () => {
                         <input
                             type="file"
                             onChange={e => setFiles(e.target.files)}
-                            className="w-full p-2 border border-gray-300 rounded-2xl focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                            className="w-full p-2 border border-gray-300 rounded-2xl focus:outline-none focus:ring-2 focus:ring-emerald-500"
                         />
                     </div>
                     <div>
                         <label className="block text-sm font-medium text-gray-700 mb-2">Content</label>
                         <Editor value={content} onChange={setContent} />
                     </div>
-                    <button className="w-full py-2 bg-indigo-600 text-white font-medium rounded-2xl hover:bg-indigo-700 transition-colors focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                    <button className="w-full py-2 bg-emerald-600   text-white font-medium rounded-2xl hover:bg-emerald-700 transition-colors focus:outline-none focus:ring-2 focus:ring-emerald-500">
                         Update Post
                     </button>
                 </form>

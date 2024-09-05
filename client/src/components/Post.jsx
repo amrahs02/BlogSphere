@@ -62,7 +62,7 @@ const Post = ({ title, summary, cover, createdAt, updatedAt, author, _id }) => {
                 </div>
 
                 <Link to={`/post/${_id}`}>
-                    <h1 className="text-xl font-bold text-gray-900 mb-4 hover:text-indigo-600 transition-colors">{title}</h1>
+                    <h1 className="text-xl font-bold text-gray-900 mb-4 hover:text-emerald-600 transition-colors">{title}</h1>
                 </Link>
                 <p className="text-gray-700 text-sm mb-1 leading-relaxed">{summary}</p>
             </div>
