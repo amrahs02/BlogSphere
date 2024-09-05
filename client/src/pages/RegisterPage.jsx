@@ -47,7 +47,7 @@ const RegisterPage = () => {
         />
         <button
           type="submit"
-          className="w-full p-3 bg-emerald-700 text-white font-semibold rounded-2xl hover:bg-emerals-700 focus:outline-none focus:ring-2 focus:ring-emerald-500"
+          className="w-full p-3 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold rounded-2xl hover:bg-emerals-700 focus:outline-none focus:ring-2 focus:ring-emerald-500"
         >
           Register
         </button>

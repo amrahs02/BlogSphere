@@ -58,7 +58,7 @@ const IndexPage = () => {
   }, []);
 
   return (
-    <div className="container mx-auto p-4">
+    <div className="container mx-auto min-h-screen p-4">
 
       {/* search function  */}
       <form onSubmit={handleSearch} className="mb-4 flex flex-col md:flex-row items-center justify-end space-y-2 md:space-y-0 md:space-x-2">
@@ -72,7 +72,7 @@ const IndexPage = () => {
         />
         <button
           type="submit"
-          className="flex justify-center items-center w-full md:w-auto bg-emerald-700 text-white px-4 py-3 rounded-2xl hover:bg-emerald-700 transition-colors duration-300 ease-in-out"
+          className="flex justify-center items-center w-full md:w-auto bg-emerald-500 text-white px-4 py-3 rounded-2xl hover:bg-emerald-600 transition-colors duration-300 ease-in-out"
         >
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-5 h-5">
             <path strokeLinecap="round" strokeLinejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
