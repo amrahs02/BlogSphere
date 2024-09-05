@@ -47,20 +47,20 @@ const LoginPage = () => {
         <input
           type="text"
           placeholder="Username"
-          className="w-full p-3 mb-4 border border-gray-300 rounded-2xl focus:outline-none focus:border-purple-500"
+          className="w-full p-3 mb-4 border border-gray-300 rounded-2xl focus:outline-none focus:border-emerald-500"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
         />
         <input
           type="password"
           placeholder="Password"
-          className="w-full p-3 mb-6 border border-gray-300 rounded-2xl   focus:outline-none focus:border-purple-500"
+          className="w-full p-3 mb-6 border border-gray-300 rounded-2xl   focus:outline-none focus:border-emerald-500"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
         <button
           type="submit"
-          className="w-full p-3 bg-purple-500 text-white font-semibold rounded-2xl hover:bg-purple-600 focus:outline-none focus:ring-2 focus:ring-purple-500"
+          className="w-full p-3 bg-emerald-600 text-white font-semibold rounded-2xl hover:bg-emerald-700 focus:outline-none focus:ring-2 focus:ring-emerald-500"
         >
           Login
         </button>
@@ -71,7 +71,7 @@ const LoginPage = () => {
           <p className="mt-4">New user?</p>
           <Link
             to="/register"
-            className="text-purple-500 hover:text-purple-700 font-medium"
+            className="text-emerald-500 hover:text-emerald-700 font-medium"
           >
             Register here
           </Link>
