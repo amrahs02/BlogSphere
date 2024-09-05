@@ -28,13 +28,14 @@ const Post = ({ title, summary, cover, createdAt, updatedAt, author, _id }) => {
     const initials = author ? getInitials(author.username) : 'U';
 
     return (
-        <div className="bg-white border border-slate-300 p-3 shadow- rounded-2xl overflow-hidden max-w-2xl mx-auto my-8 transition-transform transform hover:shadow-lg">
+        <div className="bg-white border border-slate-300 p-3 shadow- rounded-3xl overflow-hidden max-w-2xl mx-auto my-8 transition-transform transform hover:shadow-lg">
             <div className="relative ">
+                
                 <Link to={`/post/${_id}`}>
                     <img
                         src={`${baseURL}/${cover}`}
                          alt={`${title} cover`}
-                        className="object-cover rounded-2xl w-full h-32"
+                        className="object-cover rounded-2xl w-full h-20"
                     />
                 </Link>
             </div>
@@ -53,7 +54,7 @@ const Post = ({ title, summary, cover, createdAt, updatedAt, author, _id }) => {
                         ))}
                     </div>
                     <div className="ml-4  flex flex-col">
-                        <p className="text-lg text-gray-800 font-medium"> Author : {author ? author.username : 'Unknown'}</p>
+                        <p className="text-sm text-gray-800 font-medium"> Author : {author ? author.username : 'Unknown'}</p>
                         <time className="text-sm text-gray-500">
                             Created: {formatISO9075(new Date(createdAt))}
                         </time>
@@ -61,9 +62,9 @@ const Post = ({ title, summary, cover, createdAt, updatedAt, author, _id }) => {
                 </div>
 
                 <Link to={`/post/${_id}`}>
-                    <h1 className="text-3xl font-bold text-gray-900 mb-4 hover:text-indigo-600 transition-colors">{title}</h1>
+                    <h1 className="text-xl font-bold text-gray-900 mb-4 hover:text-indigo-600 transition-colors">{title}</h1>
                 </Link>
-                <p className="text-gray-700 text-lg mb-1 leading-relaxed">{summary}</p>
+                <p className="text-gray-700 text-sm mb-1 leading-relaxed">{summary}</p>
             </div>
         </div>
     );
