@@ -20,6 +20,17 @@ A modern blog application built using the MERN stack (MongoDB, Express, React, N
 
 BlogSphere is a full-stack blog application that allows users to register, login, and create, edit, and view blog posts. The application has a clean design and includes functionality for searching and filtering posts by tags. It is built with modern web technologies and follows best practices for development and security.
 
+## Screenshots
+## Screenshots
+
+![Screenshot 1](/client/src/assets//1.png)
+![Screenshot 2](/client/src/assets//2.png)
+![Screenshot 3](/client/src/assets//3.png)
+![Screenshot 4](/client/src/assets//4.png)
+![Screenshot 5](/client/src/assets//5.png)
+
+
+
 ## Technologies
 
 - **React**: A JavaScript library for building user interfaces.
