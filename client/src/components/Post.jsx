@@ -14,16 +14,6 @@ const getInitials = (name) => {
     return parts.map(part => part.charAt(0).toUpperCase()).join('');
 };
 
-// Utility function to generate a random color for the initials
-const getRandomColor = () => {
-    const letters = '0123456789ABCDEF';
-    let color = '#';
-    for (let i = 0; i < 6; i++) {
-        color += letters[Math.floor(Math.random() * 16)];
-    }
-    return color;
-};
-
 const Post = ({ title, summary, cover, createdAt, updatedAt, author, _id }) => {
     const initials = author ? getInitials(author.username) : 'U';
 
@@ -46,8 +36,8 @@ const Post = ({ title, summary, cover, createdAt, updatedAt, author, _id }) => {
                         {initials.split('').map((initial, index) => (
                             <div
                                 key={index}
-                                className="w-10 h-10 flex items-center justify-center rounded-2xl text-white text-xl font-bold"
-                                style={{ backgroundColor: getRandomColor() }}
+                                className="w-10 h-10 flex items-center justify-center rounded-full text-white text-xl font-bold"
+                                style={{ backgroundColor: 'black' }}
                             >
                                 {initial}
                             </div>

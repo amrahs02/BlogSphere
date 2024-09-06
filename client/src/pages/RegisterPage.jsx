@@ -31,9 +31,9 @@ const RegisterPage = () => {
   };
 
   return (
-    <div className="flex justify-center items-center bg-gray-100 min-h-screen">
+    <div className="flex justify-center items-center bg-gray-100 ">
       <form
-        className="bg-white p-8 sm:m-14 m-4 rounded-2xl shadow-lg max-w-sm w-full"
+        className="bg-white p-8 sm:m-14 mx-4 my-10 rounded-2xl shadow-lg max-w-sm w-full"
         onSubmit={register}
       >
         <h1 className="text-3xl font-bold text-center mb-6">Register</h1>

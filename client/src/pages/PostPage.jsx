@@ -18,14 +18,6 @@ const getInitials = (name) => {
 };
 
 // Utility function to generate a random color for the initials
-const getRandomColor = () => {
-  const letters = '0123456789ABCDEF';
-  let color = '#';
-  for (let i = 0; i < 6; i++) {
-    color += letters[Math.floor(Math.random() * 16)];
-  }
-  return color;
-};
 
 const PostPage = () => {
   const [postInfo, setPostInfo] = useState(null);
@@ -67,7 +59,7 @@ const PostPage = () => {
                 <div
                   key={index}
                   className="w-12 h-12 flex items-center justify-center rounded-2xl text-white text-2xl font-bold"
-                  style={{ backgroundColor: getRandomColor() }}
+                  style={{ backgroundColor: 'black' }}
                 >
                   {initial}
                 </div>
