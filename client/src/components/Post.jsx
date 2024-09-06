@@ -28,7 +28,7 @@ const Post = ({ title, summary, cover, createdAt, updatedAt, author, _id }) => {
     const initials = author ? getInitials(author.username) : 'U';
 
     return (
-        <div className="bg-white border border-slate-300 p-3 shadow- rounded-3xl overflow-hidden max-w-2xl mx-auto my-8 transition-transform transform hover:shadow-lg">
+        <div className="bg-white border border-slate-300 p-3 shadow-xl rounded-3xl overflow-hidden max-w-2xl mx-auto my-8 transition-transform transform hover:shadow-lg">
             <div className="relative ">
                 
                 <Link to={`/post/${_id}`}>

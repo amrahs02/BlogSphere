@@ -58,8 +58,8 @@ const EditPost = () => {
 
     return (
         <div className="inset-0 bg-gray-900 bg-opacity-50 flex items-center justify-center">
-            <div className="fixed inset-0 backdrop-blur-sm"></div>
-            <svg onClick={cancelPost} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className=" text-red-800 hover:text-white  bg-white rounded-xl hover:bg-red-500  sm:top-12 top-20  absolute size-8">
+            {/* <div className="fixed inset-0 backdrop-blur-sm"></div> */}
+            <svg onClick={cancelPost} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className=" text-red-800 hover:text-white  bg-white rounded-xl hover:bg-red-500 sm:top-12 top-20  absolute size-8">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
             </svg>
             <div className="relative w-4/5 mx-auto m-8 p-6 bg-white rounded-2xl shadow-lg space-y-6 z-10">
