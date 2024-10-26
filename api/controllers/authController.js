@@ -9,7 +9,9 @@ exports.register = async (req, res) => {
   try {
     const existingUser = await User.findOne({ username });
     if (existingUser) {
-      return res.status(400).json({ error: true, message: "Username already exists" });
+      return res
+        .status(400)
+        .json({ error: true, message: "Username already exists" });
     }
     const hashedPassword = bcrypt.hashSync(password, salt);
     const userDoc = await User.create({ username, password: hashedPassword });
@@ -24,14 +26,28 @@ exports.login = async (req, res) => {
   try {
     const userDoc = await User.findOne({ username });
     if (!userDoc) {
-      return res.status(400).json({ error: true, message: "User does not exist" });
+      return res
+        .status(400)
+        .json({ error: true, message: "User does not exist" });
     }
     const passOk = bcrypt.compareSync(password, userDoc.password);
     if (passOk) {
       jwt.sign({ username, id: userDoc._id }, secret, (err, token) => {
-        if (err) return res.status(500).json({ error: true, message: "Token generation failed" });
-        res.cookie("token", token, { httpOnly: true, sameSite: "None", secure: true })
-           .json({ error: false, message: "Login successful", data: { id: userDoc._id, username } });
+        if (err)
+          return res
+            .status(500)
+            .json({ error: true, message: "Token generation failed" });
+        res
+          .cookie("token", token, {
+            httpOnly: true,
+            sameSite: "None",
+            secure: false,
+          })
+          .json({
+            error: false,
+            message: "Login successful",
+            data: { id: userDoc._id, username },
+          });
       });
     } else {
       res.status(400).json({ error: true, message: "Incorrect password" });
@@ -48,7 +64,8 @@ exports.logout = (req, res) => {
 exports.profile = async (req, res) => {
   const { token } = req.cookies;
   jwt.verify(token, secret, {}, async (err, info) => {
-    if (err) return res.status(400).json({ message: "You are not authenticated" });
+    if (err)
+      return res.status(400).json({ message: "You are not authenticated" });
     try {
       const user = await User.findById(info.id);
       if (!user) return res.status(404).json({ message: "User not found" });
