@@ -8,6 +8,7 @@ import CreatePost from './pages/CreatePost'
 import IndexPage from './pages/IndexPage'
 import PostPage from './pages/PostPage'
 import EditPost from './pages/EditPost'
+import Profile from './pages/Profile'
 
 function App() {
 
@@ -22,6 +23,7 @@ function App() {
           <Route path="/create" element={<CreatePost />} />
           <Route path="/post/:id" element={<PostPage />} />
           <Route path="/edit/:id" element={<EditPost />} />
+          <Route path="/profile" element={<Profile />} />
         </Route>
       </Routes>
     </UserContextProvider>

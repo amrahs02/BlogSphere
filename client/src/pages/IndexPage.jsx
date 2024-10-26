@@ -81,7 +81,7 @@ const IndexPage = () => {
       </form>
 
       {isLoading ? (
-        <div className="flex mt-20 justify-center items-center">
+        <div className="flex mt-2 flex-col justify-center items-center">
           <TailSpin   // Type of spinner
             height="80"
             width="80"
@@ -93,6 +93,7 @@ const IndexPage = () => {
             visible={true}
 
           />
+          <div className='font-semibold'>Almost there, stay with us!</div>
         </div>
       ) : (
         <div className="flex flex-wrap gap-4">

@@ -1,32 +1,33 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 // Determine the base URL based on the environment
-const baseURL = window.location.hostname === 'localhost'
-  ? 'http://localhost:4000'
-  : 'https://blog-hub-api-kow3.onrender.com';
+const baseURL =
+  window.location.hostname === "localhost"
+    ? "http://localhost:4000"
+    : "https://blog-hub-api-kow3.onrender.com";
 
 const RegisterPage = () => {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false); // Add loading state
 
   const register = async (e) => {
     e.preventDefault();
     setLoading(true); // Set loading to true when the registration starts
     const response = await fetch(`${baseURL}/register`, {
-      method: 'POST',
+      method: "POST",
       body: JSON.stringify({ username, password }),
-      headers: { 'Content-Type': 'application/json' },
+      headers: { "Content-Type": "application/json" },
     });
     setLoading(false); // Set loading to false when the registration ends
-
-    if (response.status !== 200) {
-      alert('User registration failed');
+    if (response.status == 400) {
+      const errorData = await response.json();
+      alert(errorData.message);
     } else {
-      alert('User registered successfully');
+      alert("User registered successfully");
       // Redirect to login page
-      window.location.href = '/login';
+      window.location.href = "/login";
     }
   };
 
@@ -82,7 +83,9 @@ const RegisterPage = () => {
             />
             <button
               type="submit"
-              className={`w-full p-3 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold rounded-2xl focus:outline-none focus:ring-2 focus:ring-emerald-500 ${loading ? 'opacity-50 cursor-not-allowed' : ''}`}
+              className={`w-full p-3 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold rounded-2xl focus:outline-none focus:ring-2 focus:ring-emerald-500 ${
+                loading ? "opacity-50 cursor-not-allowed" : ""
+              }`}
               disabled={loading} // Disable button while loading
             >
               Register

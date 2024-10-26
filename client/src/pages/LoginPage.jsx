@@ -1,47 +1,72 @@
-import { useContext, useState } from 'react';
-import { Navigate, Link } from 'react-router-dom';
-import { UserContext } from '../UserContext';
+import { useContext, useState } from "react";
+import { Navigate, Link } from "react-router-dom";
+import { UserContext } from "../UserContext";
 
 // Determine the base URL based on the environment
-const baseURL = window.location.hostname === 'localhost'
-  ? 'http://localhost:4000'
-  : 'https://blog-hub-api-kow3.onrender.com';
+const baseURL =
+  window.location.hostname === "localhost"
+    ? "http://localhost:4000"
+    : "https://blog-hub-api-kow3.onrender.com";
 
 const LoginPage = () => {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
   const [redirect, setRedirect] = useState(false);
   const { setUserInfo } = useContext(UserContext);
   const [loading, setLoading] = useState(false); // Loading state
 
-  const login = async (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
     setLoading(true); // Set loading to true when the login starts
     const response = await fetch(`${baseURL}/login`, {
-      method: 'POST',
+      method: "POST",
       body: JSON.stringify({ username, password }),
-      headers: { 'Content-Type': 'application/json' },
-      credentials: 'include',
+      headers: { "Content-Type": "application/json" },
+      credentials: "include",
     });
     setLoading(false); // Set loading to false after response
-    if (response.ok) {
-      const userInfo = await response.json();
-      setUserInfo(userInfo);
+    const responseData = await response.json();
+    if (!responseData.error) {
+      // Successful login
+      setUserInfo(responseData.data);
       setRedirect(true);
     } else {
-      alert('Wrong username or password');
+      // Different messages based on `statusCode` or `details`
+      switch (responseData.statusCode) {
+        case 400:
+          if (responseData.details === "User does not exist") {
+            alert("User does not exist. Please register first.");
+          } else if (responseData.details === "Incorrect password") {
+            alert("Incorrect password. Please try again.");
+          } else {
+            alert(
+              responseData.message || "Login failed due to invalid credentials."
+            );
+          }
+          break;
+        case 500:
+          if (responseData.details === "Token generation failed") {
+            alert("Server error during login. Please try again later.");
+          } else {
+            alert("An unexpected error occurred. Please try again.");
+          }
+          break;
+        default:
+          alert("An unknown error occurred.");
+      }
+      console.log(`Error Details: ${responseData.details}`);
     }
   };
 
   if (redirect) {
-    return <Navigate to={'/'} />;
+    return <Navigate to={"/"} />;
   }
 
   return (
     <div className="flex justify-center items-center bg-gray-100">
       <form
         className="bg-white p-8 sm:m-14 mx-4 my-10 rounded-2xl shadow-lg max-w-sm w-full"
-        onSubmit={login}
+        onSubmit={handleLogin}
       >
         <h1 className="text-3xl font-bold text-center mb-6">Login</h1>
 
@@ -89,7 +114,9 @@ const LoginPage = () => {
             />
             <button
               type="submit"
-              className={`w-full p-3 bg-emerald-600 text-white font-semibold rounded-2xl hover:bg-emerald-700 focus:outline-none focus:ring-2 focus:ring-emerald-500 ${loading ? 'opacity-50 cursor-not-allowed' : ''}`}
+              className={`w-full p-3 bg-emerald-600 text-white font-semibold rounded-2xl hover:bg-emerald-700 focus:outline-none focus:ring-2 focus:ring-emerald-500 ${
+                loading ? "opacity-50 cursor-not-allowed" : ""
+              }`}
               disabled={loading} // Disable button during loading
             >
               Login
@@ -99,8 +126,12 @@ const LoginPage = () => {
 
         <div className="text-center mt-4 text-sm text-gray-500">
           <p>Credentials for testing:</p>
-          <p>Email: <strong>test@gmail.com</strong></p>
-          <p>Password: <strong>test</strong></p>
+          <p>
+            Email: <strong>test@gmail.com</strong>
+          </p>
+          <p>
+            Password: <strong>test</strong>
+          </p>
           <p className="mt-4">New user?</p>
           <Link
             to="/register"
