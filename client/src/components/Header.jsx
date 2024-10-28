@@ -38,6 +38,7 @@ const Navbar = () => {
         credentials: "include",
         method: "POST",
       });
+      localStorage.removeItem("token"); // Remove token from localStorage
       setUserInfo(null);
     } catch (error) {
       console.error("Error logging out:", error);

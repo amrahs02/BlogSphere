@@ -9,7 +9,7 @@ exports.createPost = async (req, res) => {
   const ext = parts[parts.length - 1];
   const newPath = path + "." + ext;
   fs.renameSync(path, newPath);
-  
+
   const { token } = req.cookies;
   jwt.verify(token, secret, {}, async (err, info) => {
     if (err) return res.status(400).json({ message: "Invalid token" });
@@ -41,7 +41,10 @@ exports.updatePost = async (req, res) => {
     if (err) return res.status(400).json({ message: "Invalid token" });
     const postDoc = await Post.findById(id);
     const isAuthor = JSON.stringify(postDoc.author) === JSON.stringify(info.id);
-    if (!isAuthor) return res.status(400).json({ message: "You are not the author of this post" });
+    if (!isAuthor)
+      return res
+        .status(400)
+        .json({ message: "You are not the author of this post" });
 
     await postDoc.updateOne({
       title: req.body.title,
@@ -54,7 +57,12 @@ exports.updatePost = async (req, res) => {
 };
 
 exports.getPosts = async (req, res) => {
-  res.json(await Post.find().populate("author", ["username"]).sort({ createdAt: -1 }).limit(20));
+  res.json(
+    await Post.find()
+      .populate("author", ["username"])
+      .sort({ createdAt: -1 })
+      .limit(20)
+  );
 };
 
 exports.getPost = async (req, res) => {

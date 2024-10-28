@@ -28,6 +28,7 @@ const LoginPage = () => {
     const responseData = await response.json();
     if (!responseData.error) {
       // Successful login
+      localStorage.setItem("token", responseData.token); // Store the token
       setUserInfo(responseData.data);
       setRedirect(true);
     } else {
